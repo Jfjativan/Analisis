@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visualización de Gráficas</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .chart-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .chart-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    iframe {
+      width: 100% !important;
+      border: none;
+      border-radius: 8px;
+      height: 400px;
+      min-width: 0 !important;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Visualización de Gráficas Interactivas</h1>
+
+  <div class="container">
+    <div class="chart-card">
+      <iframe title="Práctica 1" aria-label="Multiple Donuts" src="https://datawrapper.dwcdn.net/5ClH7/1/" scrolling="no" data-external="1"></iframe>
+    </div>
+    <div class="chart-card">
+      <iframe title="Práctica 1" aria-label="Multiple Donuts" src="https://datawrapper.dwcdn.net/5ClH7/1/" scrolling="no" data-external="1"></iframe>
+    </div>
+    <div class="chart-card">
+      <iframe title="Práctica 3" aria-label="Interactive line chart" src="https://datawrapper.dwcdn.net/Y7Tiy/3/" scrolling="no" data-external="1"></iframe>
+    </div>
+    <div class="chart-card">
+      <iframe title="Práctica 4" aria-label="Bar Chart" src="https://datawrapper.dwcdn.net/QIzIb/3/" scrolling="no" data-external="1"></iframe>
+    </div>
+  </div>
+
+  <script>
+    !function(){
+      "use strict";
+      window.addEventListener("message", function(event) {
+        if(event.data["datawrapper-height"] !== undefined){
+          var iframes = document.querySelectorAll("iframe");
+          for (var key in event.data["datawrapper-height"]) {
+            for (var i = 0; i < iframes.length; i++) {
+              if(iframes[i].contentWindow === event.source){
+                var newHeight = event.data["datawrapper-height"][key] + "px";
+                iframes[i].style.height = newHeight;
+              }
+            }
+          }
+        }
+      });
+    }();
+  </script>
+
+</body>
+</html>
