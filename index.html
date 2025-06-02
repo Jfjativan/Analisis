@@ -3,93 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Visualización de Gráficas</title>
+  <title>Visualización de Prácticas Colorida</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Reset básico */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9fafb;
-      margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #2c3e50;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-
-    .chart-card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-      padding: 20px;
-      transition: transform 0.3s ease;
-    }
-
-    .chart-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-    }
-
     iframe {
-      width: 100% !important;
+      min-width: 100% !important;
       border: none;
-      border-radius: 8px;
-      height: 400px;
-      min-width: 0 !important;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
     }
   </style>
 </head>
-<body>
+<body class="bg-gradient-to-tr from-indigo-100 via-pink-100 to-yellow-100 text-gray-900 font-sans">
 
-  <h1>Visualización de Gráficas Interactivas</h1>
+  <header class="bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white py-8 shadow-lg">
+    <h1 class="text-4xl font-extrabold text-center tracking-wide drop-shadow-lg">
+      Visualización de Resultados
+    </h1>
+    <p class="text-center mt-2 text-lg font-semibold tracking-wide">Gráficos interactivos de prácticas académicas</p>
+  </header>
 
-  <div class="container">
-    <div class="chart-card">
-      <iframe title="Práctica 1" aria-label="Multiple Donuts" src="https://datawrapper.dwcdn.net/5ClH7/1/" scrolling="no" data-external="1"></iframe>
-    </div>
-    <div class="chart-card">
-      <iframe title="Práctica 1" aria-label="Multiple Donuts" src="https://datawrapper.dwcdn.net/5ClH7/1/" scrolling="no" data-external="1"></iframe>
-    </div>
-    <div class="chart-card">
-      <iframe title="Práctica 3" aria-label="Interactive line chart" src="https://datawrapper.dwcdn.net/Y7Tiy/3/" scrolling="no" data-external="1"></iframe>
-    </div>
-    <div class="chart-card">
-      <iframe title="Práctica 4" aria-label="Bar Chart" src="https://datawrapper.dwcdn.net/QIzIb/3/" scrolling="no" data-external="1"></iframe>
-    </div>
-  </div>
+  <main class="max-w-5xl mx-auto px-6 py-12 space-y-16">
+
+    <section class="bg-gradient-to-r from-cyan-400 to-blue-500 p-6 rounded-xl shadow-lg text-white">
+      <h2 class="text-2xl font-bold mb-6">Práctica 1: Múltiples Donas</h2>
+      <iframe title="Practica 1" id="datawrapper-chart-5ClH7" src="https://datawrapper.dwcdn.net/5ClH7/1/" height="400" scrolling="no"></iframe>
+    </section>
+
+    <section class="bg-gradient-to-r from-green-400 to-emerald-500 p-6 rounded-xl shadow-lg text-white">
+      <h2 class="text-2xl font-bold mb-6">Práctica 2: Barras Divididas</h2>
+      <iframe title="Practica 2" id="datawrapper-chart-JGV4o" src="https://datawrapper.dwcdn.net/JGV4o/1/" height="400" scrolling="no"></iframe>
+    </section>
+
+    <section class="bg-gradient-to-r from-pink-400 to-rose-500 p-6 rounded-xl shadow-lg text-white">
+      <h2 class="text-2xl font-bold mb-6">Práctica 3: Línea Interactiva</h2>
+      <iframe title="Práctica 3" id="datawrapper-chart-Y7Tiy" src="https://datawrapper.dwcdn.net/Y7Tiy/3/" height="400" scrolling="no"></iframe>
+    </section>
+
+    <section class="bg-gradient-to-r from-yellow-400 to-orange-500 p-6 rounded-xl shadow-lg text-white">
+      <h2 class="text-2xl font-bold mb-6">Práctica 4: Barras Simples</h2>
+      <iframe title="Práctica 4" id="datawrapper-chart-QIzIb" src="https://datawrapper.dwcdn.net/QIzIb/3/" height="400" scrolling="no"></iframe>
+    </section>
+
+  </main>
+
+  <footer class="bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 text-white text-center py-6 mt-12 shadow-lg">
+    <p class="text-lg font-medium">© 2025 Visualizaciones Educativas. Todos los derechos reservados.</p>
+  </footer>
 
   <script>
-    !function(){
-      "use strict";
-      window.addEventListener("message", function(event) {
-        if(event.data["datawrapper-height"] !== undefined){
-          var iframes = document.querySelectorAll("iframe");
-          for (var key in event.data["datawrapper-height"]) {
-            for (var i = 0; i < iframes.length; i++) {
-              if(iframes[i].contentWindow === event.source){
-                var newHeight = event.data["datawrapper-height"][key] + "px";
-                iframes[i].style.height = newHeight;
-              }
+    window.addEventListener("message", function(event) {
+      if (event.data["datawrapper-height"]) {
+        const iframes = document.querySelectorAll("iframe");
+        for (const chartId in event.data["datawrapper-height"]) {
+          for (let i = 0; i < iframes.length; i++) {
+            if (iframes[i].contentWindow === event.source) {
+              iframes[i].style.height = event.data["datawrapper-height"][chartId] + "px";
             }
           }
         }
-      });
-    }();
+      }
+    });
   </script>
 
 </body>
